@@ -3,14 +3,18 @@
 	<head>
 		<title>jQuery Boilerplate</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="../src/jquery.boilerplate.js"></script>
+		<script src="../src/jquery.3dobjects.js"></script>
+		<link rel="stylesheet" href="../src/jquery.3dobjects.css" />
 	</head>
 	<body>
-		<div id="element"></div>
+		<div id="element">
+			<img src="http://placehold.it/200/ff0000" />
+			<img src="http://placehold.it/200/ff00ff" />
+		</div>
 		<script>
 			$(function() {
-				$("#element").defaultPluginName({
-					propertyName: "a custom value"
+				$("#element").gallery3dobject({
+					sides: "3"
 				});
 			});
 		</script>
