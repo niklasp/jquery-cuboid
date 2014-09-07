@@ -2,11 +2,10 @@
   	position:absolute;
 	top:50%;
 	left:50%;
-	margin-top:-100px;
-	margin-left:-100px;
-	width:200px;
-	height:200px;
-	perspective:500;
+	margin-top:-150px;
+	margin-left:-120px;
+	width:240px;
+	height:300px;
 }
 
 ul{
@@ -15,6 +14,7 @@ ul{
 	width:100%;
 	height:100%;
 	transform-style:preserve-3d;
+	-webkit-transform-style:preserve-3d;
 	margin:0;
 	padding:0;
 }
@@ -33,7 +33,7 @@ li{
 }
 
 .fill {
-	background: #000;
+	background: #f4a460;
 }
 .cara2:nth-child(1){
 	background:rgba(0,0,0,.8);
@@ -43,19 +43,15 @@ li{
 	transform:rotateY(-90deg) translateZ(10px);
 }
 .cara2:nth-child(3){
-	width: 20px;
 	transform:rotate(0deg) translateX(90px) translateZ(100px);
 }
 .cara2:nth-child(4){
-	width: 20px;
-	transform:rotateY(180deg) translateZ(-100px) translateX(-90px);
+	transform:rotateZ(180deg) translateX(-90px) translateZ(-100px);
 }
 .cara2:nth-child(5){
-	width: 20px;
 	transform:rotateX(90deg) translateX(90px) translateZ(100px);
 }
 .cara2:nth-child(6){
-	width: 20px;
 	transform:rotateX(-90deg) translateX(90px) translateZ(100px);
 }
 
