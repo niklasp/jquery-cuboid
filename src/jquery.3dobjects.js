@@ -82,8 +82,8 @@
 
 					cube.on({
 						mousemove: function(e) {
-							$(this).css('transform','rotateX(' + (e.pageY - offsettop) + 'deg) rotateY(' + (e.pageX - offsetleft) + 'deg)');
-							$(this).css('-webkit-transform','rotateX(' + (e.pageY - offsettop) + 'deg) rotateY(' + (e.pageX - offsetleft) + 'deg)');
+							$(this).css('transform','rotateX(' + (e.pageY - offsettop)/4.0 + 'deg) rotateY(' + (e.pageX - offsetleft) + 'deg)');
+							$(this).css('-webkit-transform','rotateX(' + (e.pageY - offsettop)/4.0 + 'deg) rotateY(' + (e.pageX - offsetleft) + 'deg)');
 							$(this).addClass('noanimar').removeClass('animar');
 						},
 						mouseout: function() {
