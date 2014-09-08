@@ -31,6 +31,12 @@ li{
 	text-align:center;
 	line-height:230px;
 }
+.animar {
+	transition: all 1s;
+}
+.nonanimar{
+	transition:none;
+}
 
 .fill {
 	background: #f4a460;

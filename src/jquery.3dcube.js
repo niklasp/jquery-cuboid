@@ -22,7 +22,8 @@
 				//defines the spacing (in px) between sides when there are 2 sides only,
 				//otherwise 3 sides span the dimensions of the cube
 				depth: 20,
-				sideclass: "carawall"
+				sideclass: "carawall",
+				perspective: 0,
 		};
 
 		// The actual plugin constructor
@@ -61,12 +62,10 @@
 						$images.wrap('<li class="' + sideclass + '"></li>');
 
 						var amount = $('.' + sideclass).length;
-						console.log(amount);
 
 						//if there is less than 6 sides, we unfortunately need to add some more
 						//with the default .fill background color
 						for (var i = amount; i < 6; i++) {
-							console.log("ay");
 							$('.cube').append('<li class="' + sideclass + ' fill"></li>');
 						}
 
@@ -75,21 +74,33 @@
 
 				},
 				cubeControls: function () {
+					var content3d = $('.content3d');
 					var cube = $('.cube'),
 					offset = $(this.element).offset(),
 					offsetleft = (offset.left + this.settings['width'] / 2.0),
-					offsettop = (offset.top + this.settings['height'] / 2.0);
+					offsettop = (offset.top + this.settings['height'] / 2.0),
+					enterX = 0,
+					enterY = 0,
+					_width = this.settings['width'];
 
-					cube.on({
+					content3d.on({
+						mouseenter: function(e) {
+							enterX = e.pageX - offset.left;
+							enterY = e.pageY - offset.top;
+						},						
 						mousemove: function(e) {
-							$(this).css('transform','rotateX(' + (e.pageY - offsettop)/4.0 + 'deg) rotateY(' + (e.pageX - offsetleft) + 'deg)');
-							$(this).css('-webkit-transform','rotateX(' + (e.pageY - offsettop)/4.0 + 'deg) rotateY(' + (e.pageX - offsetleft) + 'deg)');
-							$(this).addClass('noanimar').removeClass('animar');
+							//rotation on mousemove
+							var rotX = (enterY + (offset.top - e.pageY) )/ 4,
+								rotY = Math.floor(((e.pageX - offset.left) - enterX) / _width * 120);
+							
+							cube.css('transform','rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)');
+							cube.css('-webkit-transform','rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)');
+							cube.addClass('noanimar').removeClass('animar');
 						},
 						mouseout: function() {
-							$(this).css('transform','rotateX(0deg) rotateY(0deg)');
-							$(this).css('-webkit-transform','rotateX(0deg) rotateY(0deg)');
-							$(this).addClass('animar').removeClass('noanimar');
+							cube.css('transform','rotateX(0deg) rotateY(0deg)');
+							cube.css('-webkit-transform','rotateX(0deg) rotateY(0deg)');
+							cube.addClass('animar').removeClass('noanimar');
 						}
 					});
 
@@ -131,15 +142,6 @@
 					.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
 					$('.' + sideclass + ':nth-child(6)')
 					.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(-' + _width/2 + 'px) translateZ(' + _width/2 + 'px) rotateX(-90deg)');															
-
-					//0   -- -120
-					//100 -- -20
-					//200 -- 80
-					//300 -- 180
-					//400 -- 280
-					//450 -- 330
-					//500 -- 380
-					//600 -- 480
 				}
 		});
 
