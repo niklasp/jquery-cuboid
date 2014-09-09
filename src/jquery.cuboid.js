@@ -12,7 +12,7 @@
 		// minified (especially when both are regularly referenced in your plugin).
 
 		// Create the defaults once
-		var pluginName = "gallery3dobject",
+		var pluginName = "cuboid",
 				defaults = {
 				//the number of sides of the object (2 to n), cube = 6
 				sides: "auto",
@@ -22,8 +22,12 @@
 				//defines the spacing (in px) between sides when there are 2 sides only,
 				//otherwise 3 sides span the dimensions of the cube
 				depth: 20,
+				//the class of the cube sides also offers different style options
 				sideclass: "carawall",
+				//TODO
 				perspective: 0,
+				//TODO
+				side_hierarchy: "left,right,front,back,top,bottom"
 		};
 
 		// The actual plugin constructor
@@ -49,24 +53,30 @@
 						// you can add more functions like the one below and
 						// call them like so: this.yourOtherFunction(this.element, this.settings).
 
-						var $wrapper = $(this.element);
-						var sideclass = this.settings['sideclass'];
-						var $images = $wrapper.children("img");
+						var $wrapper = $(this.element),
+						sideclass = this.settings['sideclass'],
+						$images = $wrapper.children("img"),
+
+						side_hierarchy = this.settings['side_hierarchy'];
 
 						$wrapper.addClass('content3d');
 						$wrapper.append('<ul class="cube"></ul>');
-						$images.each(function() {
+						$images.each(function(idx) {
+							console.log( idx + ": " + $( this ) );
 							var side = $(this);
 							$('.cube').append($(side));
+							$(this).wrap('<li class="' + sideclass + '"></li>');
 						});
-						$images.wrap('<li class="' + sideclass + '"></li>');
+						//$images.wrap('<li class="' + sideclass + '"></li>');
 
-						var amount = $('.' + sideclass).length;
+						this.side_amount = $wrapper.find('.' + sideclass).length;
 
 						//if there is less than 6 sides, we unfortunately need to add some more
 						//with the default .fill background color
-						for (var i = amount; i < 6; i++) {
-							$('.cube').append('<li class="' + sideclass + ' fill"></li>');
+						var hierarchy_parts = side_hierarchy.split(',');
+
+						for (var i = this.side_amount; i < 6; i++) {
+							$('.cube').append('<li class="' + hierarchy_parts[i] + ' ' + sideclass + ' fill"></li>');
 						}
 
 						this.cubeControls();
@@ -118,30 +128,33 @@
 						"margin-left"	: -(_width / 2) + 'px',
 						"margin-top"	: -(_height/ 2) + 'px',
 					});
-					$('.' + 
-						sideclass + ':nth-child(3), .' + 
-						sideclass + ':nth-child(4), .' + 
-						sideclass + ':nth-child(5), .' + 
-						sideclass + ':nth-child(6)')
-					.css('width',_depth);
-					$('.' + 
-						sideclass + ':nth-child(5), .' + 
-						sideclass + ':nth-child(6)')
-					.css('height',_width);
+					
+					//todo >= 3
+					if (this.side_amount < 3) {
+						$('.' + 
+							sideclass + ':nth-child(3), .' + 
+							sideclass + ':nth-child(4), .' + 
+							sideclass + ':nth-child(5), .' + 
+							sideclass + ':nth-child(6)')
+						.css('width',_depth);
+						$('.' + 
+							sideclass + ':nth-child(5), .' + 
+							sideclass + ':nth-child(6)')
+						.css('height',_width);
+					}
 
-					$('.' + sideclass + ':nth-child(1)')
-					.css('transform','rotateY(90deg) translateX(-' + _width/2 + 'px) translateZ(' + _depth/2 + 'px)')
-					.css('-webkit-transform','rotateY(90deg) translateX(-' + _width/2 + 'px) translateZ(' + _depth/2 + 'px)');
-					$('.' + sideclass + ':nth-child(2)')
-					.css('transform','rotateY(-90deg) translateX(' + _width/2 + 'px) translateZ(' + _depth/2 + 'px)');
-					$('.' + sideclass + ':nth-child(3)')
-					.css('transform','rotate(0deg) translateX(' + (_width/2 - _depth/2) + 'px) translateZ(' + _width + 'px)');
-					$('.' + sideclass + ':nth-child(4)')
-					.css('transform','rotateZ(180deg) translateX(-' + (_width/2 - _depth/2) + 'px)');
-					$('.' + sideclass + ':nth-child(5)')
-					.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
-					$('.' + sideclass + ':nth-child(6)')
-					.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(-' + _width/2 + 'px) translateZ(' + _width/2 + 'px) rotateX(-90deg)');															
+					var left = $('.' + sideclass + ':nth-child(1)'),
+						right = $('.' + sideclass + ':nth-child(2)'),
+						top = $('.' + sideclass + ':nth-child(3)'),
+						bottom = $('.' + sideclass + ':nth-child(4)'),
+						front = $('.' + sideclass + ':nth-child(5)'),
+						back = $('.' + sideclass + ':nth-child(6)');
+					left.css('transform','rotateY(90deg) translateX(-' + _width/2 + 'px) translateZ(' + _depth/2 + 'px)')
+					right.css('transform','rotateY(-90deg) translateX(' + _width/2 + 'px) translateZ(' + _depth/2 + 'px)');
+					top.css('transform','rotate(0deg) translateX(' + (_width/2 - _depth/2) + 'px) translateZ(' + _width + 'px)');
+					bottom.css('transform','rotateZ(180deg) translateX(-' + (_width/2 - _depth/2) + 'px)');
+					front.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
+					back.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(-' + _width/2 + 'px) translateZ(' + _width/2 + 'px) rotateX(-90deg)');															
 				}
 		});
 

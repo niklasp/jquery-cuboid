@@ -1,4 +1,4 @@
-#jQuery 3d cube
+#jQuery cuboid
 
 
 ### built with jQuery Boilerplate [![Build Status](https://secure.travis-ci.org/jquery-boilerplate/jquery-boilerplate.svg?branch=master)](https://travis-ci.org/jquery-boilerplate/jquery-boilerplate) ![Bower Version](https://badge.fury.io/bo/jquery-boilerplate.svg)
@@ -42,13 +42,13 @@ The basic structure of the project is given in the following way:
 │   ├── jquery.boilerplate.js
 │   └── jquery.boilerplate.min.js
 ├── src/
-│   ├── jquery.boilerplate.coffee
-│   └── jquery.boilerplate.js
+│   ├── jquery.cuboid.coffee
+│   └── jquery.cuboid.js
 ├── .editorconfig
 ├── .gitignore
 ├── .jshintrc
 ├── .travis.yml
-├── boilerplate.jquery.json
+├── cuboid.jquery.json
 ├── Gruntfile.js
 └── package.json
 ```
