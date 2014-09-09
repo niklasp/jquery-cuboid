@@ -1,5 +1,6 @@
 #jQuery cuboid
 
+This project is for displaying images on awesome 3d cuboids that can easily be turned by mouse movements. See the demo for action and what can be done. jQuery cuboid uses css3 for displaying and some jQuery for rotating the objects.
 
 ### built with jQuery Boilerplate [![Build Status](https://secure.travis-ci.org/jquery-boilerplate/jquery-boilerplate.svg?branch=master)](https://travis-ci.org/jquery-boilerplate/jquery-boilerplate) ![Bower Version](https://badge.fury.io/bo/jquery-boilerplate.svg)
 
