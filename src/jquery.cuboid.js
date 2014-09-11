@@ -125,8 +125,6 @@
 					$('.content3d').css({
 						"width"			: _width + 'px',
 						"height"		: _height + 'px',
-						"margin-left"	: -(_width / 2) + 'px',
-						"margin-top"	: -(_height/ 2) + 'px',
 					});
 					
 					//todo >= 3

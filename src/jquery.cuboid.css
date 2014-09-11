@@ -1,14 +1,10 @@
 .content3d{
-  	position:absolute;
-	top:50%;
-	left:50%;
-	margin-top:-150px;
-	margin-left:-120px;
+	margin: 10px auto;
 	width:240px;
 	height:300px;
 }
 
-ul{
+.content3d ul {
 	cursor:all-scroll;
 	display:block;
 	width:100%;
@@ -19,7 +15,7 @@ ul{
 	padding:0;
 }
 
-li{
+.content3d li {
 	background:rgba(255,255,255,.5);
 	border:1px solid #555;
 	display:block;
@@ -31,14 +27,14 @@ li{
 	text-align:center;
 	line-height:230px;
 }
-.animar {
+.content3d .animar {
 	transition: all 1s;
 }
-.nonanimar{
+.content3d .nonanimar{
 	transition:none;
 }
 
-.fill {
+.content3d .fill {
 	background: #f4a460;
 }
 .cara2:nth-child(1){
