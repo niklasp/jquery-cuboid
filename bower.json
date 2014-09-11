@@ -1,18 +1,24 @@
 {
-	"name": "jquery-boilerplate",
-	"version": "3.3.4",
-	"homepage": "http://jqueryboilerplate.com",
+	"name": "jquery-cuboid",
+	"version": "1.0.0",
 	"authors": [
-		"Zeno Rocha <hi@zenorocha.com>"
+		"Niklas Plessing <contact@niklasplessing.net>"
 	],
-	"description": "A jump-start for jQuery plugins development.",
-	"main": "src/jquery.boilerplate.js",
+	"description": "A simple 3d cuboid gallery with jquery and css3 transformations.",
+	"main": "src/jquery.cuboid.js",
 	"keywords": [
 		"jquery",
 		"plugin",
-		"boilerplate",
+		"cuboid",
 		"jquery-plugin",
-		"jquery-boilerplate"
+		"jquery-cuboid"
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"jquery": ">=1.4"
+	}
+	"repository": {
+  		"type": "git",
+  		"url": "https://github.com/niklasp/jquery-cuboid.git"
+	}
 }
