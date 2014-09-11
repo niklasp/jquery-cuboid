@@ -2,7 +2,7 @@
 
 This project is for displaying images on awesome 3d cuboids that can easily be turned by mouse movements. See the demo for action and what can be done. jQuery cuboid uses css3 for displaying and some jQuery for rotating the objects.
 
-### built with jQuery Boilerplate [![Build Status](https://secure.travis-ci.org/jquery-boilerplate/jquery-boilerplate.svg?branch=master)](https://travis-ci.org/jquery-boilerplate/jquery-boilerplate) ![Bower Version](https://badge.fury.io/bo/jquery-boilerplate.svg)
+jQuery-cuboid is built with jQuery Boilerplate [![Build Status](https://secure.travis-ci.org/jquery-boilerplate/jquery-boilerplate.svg?branch=master)](https://travis-ci.org/jquery-boilerplate/jquery-boilerplate)
 
 ### A jump-start for jQuery plugins development
 
@@ -21,14 +21,14 @@ This project won't seek to provide a perfect solution to every possible pattern,
 2. Include plugin's code:
 
 	```html
-	<script src="dist/jquery.boilerplate.min.js"></script>
+	<script src="dist/jquery.cuboid.min.js"></script>
 	```
 
 3. Call the plugin:
 
 	```javascript
-	$("#element").defaultPluginName({
-		propertyName: "a custom value"
+	$("#element").cuboid({
+		//configuration options
 	});
 	```
 
@@ -40,51 +40,49 @@ The basic structure of the project is given in the following way:
 ├── demo/
 │   └── index.html
 ├── dist/
-│   ├── jquery.boilerplate.js
-│   └── jquery.boilerplate.min.js
+│   ├── jquery.cuboid.js
+│   └── jquery.cuboid.min.js
 ├── src/
-│   ├── jquery.cuboid.coffee
 │   └── jquery.cuboid.js
 ├── .editorconfig
 ├── .gitignore
 ├── .jshintrc
 ├── .travis.yml
-├── cuboid.jquery.json
 ├── Gruntfile.js
 └── package.json
 ```
 
-#### [demo/](https://github.com/jquery-boilerplate/boilerplate/tree/master/demo)
+#### [demo/](https://github.com/niklasp/jquery-cuboid/tree/master/demo)
 
 Contains a simple HTML file to demonstrate your plugin.
 
-#### [dist/](https://github.com/jquery-boilerplate/boilerplate/tree/master/dist)
+#### [dist/](https://github.com/niklasp/jquery-cuboid/tree/master/dist)
 
 This is where the generated files are stored once Grunt runs.
 
-#### [src/](https://github.com/jquery-boilerplate/boilerplate/tree/master/src)
+#### [src/](https://github.com/niklasp/jquery-cuboid/tree/master/src)
 
 Contains the files responsible for your plugin, you can choose between JavaScript or CoffeeScript.
 
-#### [.editorconfig](https://github.com/jquery-boilerplate/boilerplate/tree/master/.editorconfig)
+#### [.editorconfig](https://github.com/niklasp/jquery-cuboid/tree/master/.editorconfig)
 
 This file is for unifying the coding style for different editors and IDEs.
 
 > Check [editorconfig.org](http://editorconfig.org) if you haven't heard about this project yet.
 
-#### [.gitignore](https://github.com/jquery-boilerplate/boilerplate/tree/master/.gitignore)
+#### [.gitignore](https://github.com/niklasp/jquery-cuboid/tree/master/.gitignore)
 
 List of files that we don't want Git to track.
 
 > Check this [Git Ignoring Files Guide](https://help.github.com/articles/ignoring-files) for more details.
 
-#### [.jshintrc](https://github.com/jquery-boilerplate/boilerplate/tree/master/.jshintrc)
+#### [.jshintrc](https://github.com/niklasp/jquery-cuboid/tree/master/.jshintrc)
 
 List of rules used by JSHint to detect errors and potential problems in JavaScript.
 
 > Check [jshint.com](http://jshint.com/about/) if you haven't heard about this project yet.
 
-#### [.travis.yml](https://github.com/jquery-boilerplate/boilerplate/tree/master/.travis.yml)
+#### [.travis.yml](https://github.com/niklasp/jquery-cuboid/tree/master/.travis.yml)
 
 Definitions for continous integration using Travis.
 
@@ -96,49 +94,19 @@ Package manifest file used to publish plugins in jQuery Plugin Registry.
 
 > Check this [Package Manifest Guide](http://plugins.jquery.com/docs/package-manifest/) for more details.
 
-#### [Gruntfile.js](https://github.com/jquery-boilerplate/boilerplate/tree/master/Gruntfile.js)
+#### [Gruntfile.js](https://github.com/niklasp/jquery-cuboid/tree/master/Gruntfile.js)
 
 Contains all automated tasks using Grunt.
 
 > Check [gruntjs.com](http://gruntjs.com) if you haven't heard about this project yet.
 
-#### [package.json](https://github.com/jquery-boilerplate/boilerplate/tree/master/package.json)
+#### [package.json](https://github.com/niklasp/jquery-cuboid/tree/master/package.json)
 
 Specify all dependencies loaded via Node.JS.
 
 > Check [NPM](https://npmjs.org/doc/json.html) for more details.
 
-## Guides
-
-#### How did we get here?
-
-Have you got in this repo and still not sure about using this boilerplate?
-
-Well, extending jQuery with plugins and methods is very powerful and can save you and your peers a lot of development time by abstracting your most clever functions into plugins.
-
-[This awesome guide](https://github.com/jquery-boilerplate/boilerplate/wiki/How-did-we-get-here%3F), adapted from [jQuery Plugins/Authoring](http://docs.jquery.com/Plugins/Authoring), will outline the basics, best practices, and common pitfalls to watch out for as you begin writing your plugin.
-
-#### How to publish plugins?
-
-Also, check our guide on [How to publish a plugin in jQuery Plugin Registry](https://github.com/jquery-boilerplate/boilerplate/wiki/How-to-publish-a-plugin-in-jQuery-Plugin-Registry
-)!
-
-## Team
-
-jQuery Boilerplate was made with love by these guys and a bunch of awesome [contributors](https://github.com/jquery-boilerplate/boilerplate/graphs/contributors).
-
-[![Zeno Rocha](http://gravatar.com/avatar/e190023b66e2b8aa73a842b106920c93?s=70)](http://zenorocha.com) | [![Addy Osmani](http://gravatar.com/avatar/96270e4c3e5e9806cf7245475c00b275?s=70)](http://addyosmani.com) | [![Helder Santana](http://gravatar.com/avatar/63fb620ee7d14fc91030d4349d189b3e?s=70)](http://heldr.com)
---- | --- | --- | --- | --- | --- | ---
-[Zeno Rocha](http://zenorocha.com) | [Addy Osmani](http://addyosmani.com) | [Helder Santana](http://heldr.com)
-
-## Contributing
-
-Check [CONTRIBUTING.md](https://github.com/jquery-boilerplate/boilerplate/blob/master/CONTRIBUTING.md) for more information.
-
-## History
-
-Check [Releases](https://github.com/jquery-boilerplate/jquery-boilerplate/releases) for detailed changelog.
 
 ## License
 
-[MIT License](http://zenorocha.mit-license.org/) © Zeno Rocha
+MIT License
