@@ -1,3 +1,11 @@
+/*
+ *  jquery-cuboid - v1.0.0
+ *  A simple 3d cuboid gallery with jquery and css3 transformations.
+ *  
+ *
+ *  Made by Niklas Plessing <contact@niklasplessing.net>
+ *  Under MIT License
+ */
 // the semi-colon before function invocation is a safety net against concatenated
 // scripts and/or other plugins which may not be closed properly.
 ;(function ( $, window, document, undefined ) {
