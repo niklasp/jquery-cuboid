@@ -7,14 +7,19 @@
 		<link rel="stylesheet" href="../src/jquery.cuboid.css" />
 	</head>
 	<body>
-		<div id="element">
-			<img src="../img/image-1.jpg" />
-			<img src="../img/image-2.jpg" />
+		<div id="cuboid">
+			<li><img src="../img/left.jpg" /></li>
+			<li><img src="../img/right.jpg" /></li>
+			<li>test</li>
+			<li><img src="../img/front.jpg" /></li>
+			<li><img src="../img/top.jpg" /></li>
+			<li><img src="../img/back.jpg" /></li>
 		</div>
+
 		<script>
 			$(function() {
-				$("#element").cuboid({
-					sides: "2"
+				$("#cuboid").cuboid({
+					sides: "6"
 				});
 			});
 		</script>

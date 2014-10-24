@@ -103,11 +103,11 @@
 					_width = this.settings['width'];
 
 					content3d.on({
-						mouseenter: function(e) {
+						'touchstart mouseenter': function(e) {
 							enterX = e.pageX - offset.left;
 							enterY = e.pageY - offset.top;
 						},						
-						mousemove: function(e) {
+						'touchmove mousemove': function(e) {
 							//rotation on mousemove
 							var rotX = (enterY + (offset.top - e.pageY) )/ 4,
 								rotY = Math.floor(((e.pageX - offset.left) - enterX) / _width * 120);
@@ -116,7 +116,7 @@
 							cube.css('-webkit-transform','rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)');
 							cube.addClass('noanimar').removeClass('animar');
 						},
-						mouseout: function() {
+						'touchend mouseout': function() {
 							cube.css('transform','rotateX(0deg) rotateY(0deg)');
 							cube.css('-webkit-transform','rotateX(0deg) rotateY(0deg)');
 							cube.addClass('animar').removeClass('noanimar');

@@ -14,21 +14,21 @@
 		// Create the defaults once
 		var pluginName = "cuboid",
 				defaults = {
-				//the number of sides of the object (2 to n), cube = 6
-				sides: "auto",
-				dimension: 200,
-				width: 240,
-				height: 300,
-				//defines the spacing (in px) between sides when there are 2 sides only,
-				//otherwise 3 sides span the dimensions of the cube
-				depth: 20,
-				//the class of the cube sides also offers different style options
-				sideclass: "carawall",
-				//TODO
-				perspective: 0,
-				//TODO
-				side_hierarchy: "left,right,front,back,top,bottom"
-		};
+					//the number of sides of the object (2 to n), cube = 6
+					sides: "auto",
+					dimension: 200,
+					width: 240,
+					height: 300,
+					//defines the spacing (in px) between sides when there are 2 sides only,
+					//otherwise 3 sides span the dimensions of the cube
+					depth: 20,
+					//the class of the cube sides also offers different style options
+					sideclass: "carawall",
+					//TODO
+					perspective: 0,
+					//TODO
+					side_hierarchy: "left,right,front,back,top,bottom"
+				};
 
 		// The actual plugin constructor
 		function Plugin ( element, options ) {
@@ -55,7 +55,7 @@
 
 						var $wrapper = $(this.element),
 						sideclass = this.settings.sideclass,
-						$images = $wrapper.children("img"),
+						$images = $wrapper.children("li"),
 
 						side_hierarchy = this.settings.side_hierarchy;
 
@@ -119,9 +119,16 @@
 
 				cubeCss: function() {
 					var sideclass = this.settings['sideclass'];
-					var _width  = this.settings['width'],
-						_height = this.settings['height'],
-						_depth  = this.settings['depth'];
+					// var _width  = this.settings['width'],
+					// 	_height = this.settings['height'],
+					// 	_depth  = this.settings['depth'];		
+					// 	
+					// 		
+
+
+					var _width  = $('.' + sideclass + ':nth-child(2) > li > img').width(),
+						_height = $('.' + sideclass + ':nth-child(1) > li > img').height(),
+						_depth  = $('.' + sideclass + ':nth-child(3) > li > img').height();
 
 					$('.content3d').css({
 						"width"			: _width + 'px',
@@ -144,16 +151,18 @@
 
 					var left = $('.' + sideclass + ':nth-child(1)'),
 						right = $('.' + sideclass + ':nth-child(2)'),
-						top = $('.' + sideclass + ':nth-child(3)'),
-						bottom = $('.' + sideclass + ':nth-child(4)'),
-						front = $('.' + sideclass + ':nth-child(5)'),
+						bottom = $('.' + sideclass + ':nth-child(3)'),
+						front = $('.' + sideclass + ':nth-child(4)'),
+						top = $('.' + sideclass + ':nth-child(5)'),
 						back = $('.' + sideclass + ':nth-child(6)');
-					left.css('transform','rotateY(90deg) translateX(-' + _width/2 + 'px) translateZ(' + _depth/2 + 'px)')
-					right.css('transform','rotateY(-90deg) translateX(' + _width/2 + 'px) translateZ(' + _depth/2 + 'px)');
-					top.css('transform','rotate(0deg) translateX(' + (_width/2 - _depth/2) + 'px) translateZ(' + _width + 'px)');
-					bottom.css('transform','rotateZ(180deg) translateX(-' + (_width/2 - _depth/2) + 'px)');
-					front.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
-					back.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(-' + _width/2 + 'px) translateZ(' + _width/2 + 'px) rotateX(-90deg)');															
+					right.css('transform','rotateY(90deg) translateX(-' + _width/2 + 'px) translateZ(' + _width + 'px)')
+					left.css('transform','rotateY(-90deg) translateX(' + _width/2 + 'px) translateZ(' + _width/2 + 'px)');
+					front.css('transform','rotate(0deg) translateX(' +  0 + 'px) translateZ(' + _width + 'px)');
+					back.css('transform','');
+					// bottom.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
+					bottom.css('transform','translateY(' + _height/2 + 'px) translateY(0px) translateZ(' + _height/2 + 'px) rotateX(90deg)');
+					top.css('transform','translateY(' + -_height/2 + 'px) translateY(0px) translateZ(' + _height/2 + 'px) rotateX(90deg)');
+					
 				}
 		});
 
