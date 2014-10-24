@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 		// Concat definitions
 		concat: {
 			dist: {
-				src: ["src/jquery.cuboid.js"],
+				src: ["src/jquery.cuboid.js", "bower_components/imagesloaded/imagesloaded.pkgd.js"],
 				dest: "dist/jquery.cuboid.js"
 			},
 			options: {

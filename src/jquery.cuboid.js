@@ -63,7 +63,6 @@
 						var $ul = "<ul class='cube'></ul>";
 						$wrapper.append($ul);
 						$images.each(function(idx) {
-							console.log( idx + ": " + $( this ) );
 							var side = $(this);
 							$('.cube').append($(side));
 							$(this).wrap('<li class="' + sideclass + '"></li>');
@@ -125,44 +124,46 @@
 					// 	
 					// 		
 
+					imagesLoaded('.content3d', function() {
 
-					var _width  = $('.' + sideclass + ':nth-child(2) > li > img').width(),
-						_height = $('.' + sideclass + ':nth-child(1) > li > img').height(),
-						_depth  = $('.' + sideclass + ':nth-child(3) > li > img').height();
+						var _width  = $('.' + sideclass + ':nth-child(2) > li > img').width(),
+							_height = $('.' + sideclass + ':nth-child(1) > li > img').height(),
+							_depth  = $('.' + sideclass + ':nth-child(3) > li > img').height();
 
-					$('.content3d').css({
-						"width"			: _width + 'px',
-						"height"		: _height + 'px',
+						$('.content3d').css({
+							"width"			: _width + 'px',
+							"height"		: _height + 'px',
+						});
+						
+						//todo >= 3
+						if (this.side_amount < 3) {
+							$('.' + 
+								sideclass + ':nth-child(3), .' + 
+								sideclass + ':nth-child(4), .' + 
+								sideclass + ':nth-child(5), .' + 
+								sideclass + ':nth-child(6)')
+							.css('width',_depth);
+							$('.' + 
+								sideclass + ':nth-child(5), .' + 
+								sideclass + ':nth-child(6)')
+							.css('height',_width);
+						}
+
+						var left = $('.' + sideclass + ':nth-child(1)'),
+							right = $('.' + sideclass + ':nth-child(2)'),
+							bottom = $('.' + sideclass + ':nth-child(3)'),
+							front = $('.' + sideclass + ':nth-child(4)'),
+							top = $('.' + sideclass + ':nth-child(5)'),
+							back = $('.' + sideclass + ':nth-child(6)');
+						right.css('transform','rotateY(90deg) translateX(-' + _width/2 + 'px) translateZ(' + _width + 'px)')
+						left.css('transform','rotateY(-90deg) translateX(' + _width/2 + 'px) translateZ(' + _width/2 + 'px)');
+						front.css('transform','rotate(0deg) translateX(' +  0 + 'px) translateZ(' + _width + 'px)');
+						back.css('transform','');
+						// bottom.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
+						bottom.css('transform','translateY(' + _height/2 + 'px) translateY(0px) translateZ(' + _height/2 + 'px) rotateX(90deg)');
+						top.css('transform','translateY(' + -_height/2 + 'px) translateY(0px) translateZ(' + _height/2 + 'px) rotateX(90deg)');
+						
 					});
-					
-					//todo >= 3
-					if (this.side_amount < 3) {
-						$('.' + 
-							sideclass + ':nth-child(3), .' + 
-							sideclass + ':nth-child(4), .' + 
-							sideclass + ':nth-child(5), .' + 
-							sideclass + ':nth-child(6)')
-						.css('width',_depth);
-						$('.' + 
-							sideclass + ':nth-child(5), .' + 
-							sideclass + ':nth-child(6)')
-						.css('height',_width);
-					}
-
-					var left = $('.' + sideclass + ':nth-child(1)'),
-						right = $('.' + sideclass + ':nth-child(2)'),
-						bottom = $('.' + sideclass + ':nth-child(3)'),
-						front = $('.' + sideclass + ':nth-child(4)'),
-						top = $('.' + sideclass + ':nth-child(5)'),
-						back = $('.' + sideclass + ':nth-child(6)');
-					right.css('transform','rotateY(90deg) translateX(-' + _width/2 + 'px) translateZ(' + _width + 'px)')
-					left.css('transform','rotateY(-90deg) translateX(' + _width/2 + 'px) translateZ(' + _width/2 + 'px)');
-					front.css('transform','rotate(0deg) translateX(' +  0 + 'px) translateZ(' + _width + 'px)');
-					back.css('transform','');
-					// bottom.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
-					bottom.css('transform','translateY(' + _height/2 + 'px) translateY(0px) translateZ(' + _height/2 + 'px) rotateX(90deg)');
-					top.css('transform','translateY(' + -_height/2 + 'px) translateY(0px) translateZ(' + _height/2 + 'px) rotateX(90deg)');
-					
 				}
 		});
 

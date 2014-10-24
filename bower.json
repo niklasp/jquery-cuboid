@@ -1,24 +1,27 @@
 {
-	"name": "jquery-cuboid",
-	"version": "1.0.0",
-	"authors": [
-		"Niklas Plessing <contact@niklasplessing.net>"
-	],
-	"description": "A simple 3d cuboid gallery with jquery and css3 transformations.",
-	"main": "src/jquery.cuboid.js",
-	"keywords": [
-		"jquery",
-		"plugin",
-		"cuboid",
-		"jquery-plugin",
-		"jquery-cuboid"
-	],
-	"license": "MIT",
-	"dependencies": {
-		"jquery": ">=1.4"
-	},
-	"repository": {
-  		"type": "git",
-  		"url": "https://github.com/niklasp/jquery-cuboid.git"
-	}
+  "name": "jquery-cuboid",
+  "version": "1.0.0",
+  "authors": [
+    "Niklas Plessing <contact@niklasplessing.net>"
+  ],
+  "description": "A simple 3d cuboid gallery with jquery and css3 transformations.",
+  "main": "src/jquery.cuboid.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "cuboid",
+    "jquery-plugin",
+    "jquery-cuboid"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niklasp/jquery-cuboid.git"
+  },
+  "devDependencies": {
+    "imagesloaded": "~3.1.8"
+  }
 }
