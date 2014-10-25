@@ -14,7 +14,7 @@
 		// Create the defaults once
 		var pluginName = "cuboid",
 				defaults = {
-					//the number of sides of the object (2 to n), cube = 6
+					//the number of sides of the object (2 to n) or 'auto', cube = 6
 					sides: "auto",
 					dimension: 200,
 					width: 240,
@@ -26,6 +26,7 @@
 					sideclass: "carawall",
 					//TODO
 					perspective: 0,
+					//the rotation of the cuboid in the beginning
 					rotateX: -15,
 					rotateY: -45,
 					//TODO
@@ -69,7 +70,6 @@
 							$('.cube').append($(side));
 							$(this).wrap('<li class="' + sideclass + '"></li>');
 						});
-						//$images.wrap('<li class="' + sideclass + '"></li>');
 
 						this.side_amount = $wrapper.find('.' + sideclass).length;
 
@@ -94,7 +94,7 @@
 					enterX = 0,
 					enterY = 0,
 					settings = this.settings,
-					_width = this.settings['width'];
+					_width = settings['width'];
 
 
 					content3d.on({
@@ -109,12 +109,12 @@
 							
 							cube.css('transform','rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)');
 							cube.css('-webkit-transform','rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)');
-							cube.addClass('noanimar').removeClass('animar');
+							cube.addClass('notanimated').removeClass('animated');
 						},
 						mouseout: function() {
 							cube.css('transform','rotateX(' + settings['rotateX'] + 'deg) rotateY(' + settings['rotateY'] + 'deg)');
 							cube.css('-webkit-transform','rotateX(' + settings['rotateX'] + 'deg) rotateY(' + settings['rotateY'] + 'deg)');
-							cube.addClass('animar').removeClass('noanimar');
+							cube.addClass('animated').removeClass('notanimated');
 						}
 					});
 
@@ -122,14 +122,10 @@
 
 				cubeCss: function() {
 					var sideclass = this.settings['sideclass'];
-					// var _width  = this.settings['width'],
-					// 	_height = this.settings['height'],
-					// 	_depth  = this.settings['depth'];		
-					// 	
-					// 		
-					// 		
+			
 					$('.cube').css({'transform': 'rotateX(' + this.settings['rotateX'] + 'deg) rotateY(' + this.settings['rotateY'] + 'deg)'});
-					console.log('rotateY(' + this.settings['rotateY'] + 'deg)');
+					
+					//make sure we get the correct image dimensions
 					var imgLoad = imagesLoaded( '.content3d' );
 					imgLoad.on( 'done', function( instance ) {
 						var img1 = new Image(), img2 = new Image(), img3 = new Image();
@@ -138,14 +134,12 @@
 						_width = img1.width;
 						_height = img1.height;
 						_depth = img2.height;
-						// var _width  = $('.' + sideclass + ':nth-child(2) > li > img').width(),
-						// 	_height = $('.' + sideclass + ':nth-child(1) > li > img').height(),
-						// 	_depth  = $('.' + sideclass + ':nth-child(3) > li > img').height();
 						
 						$('#cuboid').css({
 							"width"			: _width + 'px',
 							"height"		: _height + 'px',
 						});
+
 						var left = $('.' + sideclass + ':nth-child(1)'),
 							right = $('.' + sideclass + ':nth-child(2)'),
 							bottom = $('.' + sideclass + ':nth-child(3)'),
@@ -153,13 +147,7 @@
 							top = $('.' + sideclass + ':nth-child(5)'),
 							back = $('.' + sideclass + ':nth-child(6)');
 							$('.' + sideclass).css('transform-origin', '0 0');
-						// right.css({'transform':'rotateY(90deg) translateX(-' + _depth/2.0 + 'px) translateZ(' + ( _width/2.0) + 'px)', 'width': _depth});
-						// left.css({'transform':'rotateY(-90deg) translateX(' + _depth/2.0 + 'px) translateZ(' + _depth/2.0 + 'px)', 'width': _depth});
-						// front.css({'width':_width, 'height':_height, 'transform':'rotate(0deg) translateX(' +  0 + 'px) translateZ(' + _depth + 'px)'});
-						// back.css({'width':_width, 'height':_height,'transform':''});
-						// // bottom.css('transform','translateX(' + (_width/2 - _depth/2) + 'px) translateY(' + (_height-_width/2) + 'px) translateZ(' + _width/2 + 'px) rotateX(90deg) ');
-						// bottom.css({'height': _depth,'width': _width,'transform':'rotateX(90deg) translateY(' + _depth/2 + 'px) '});
-						// top.css({'height': _depth,'width': _width,'transform':'rotateX(90deg) translateZ(' + _depth/2 + 'px) translateY(' + _depth/2.0 + 'px)'});
+						
 							front.css('transform','translateZ(' + _depth/2.0 + 'px)');
 							back.css('transform', 'rotateY(180deg) translateZ(' + _depth/2.0 + 'px) translateX(-' + _width + 'px)');
 							left.css({'width': _depth, 'transform':'rotateY(-90deg) translateX(-' + _depth/2 + 'px)'});
@@ -167,37 +155,7 @@
 							top.css({'height': _depth, 'transform':'rotateX(90deg) translateY(-' + _depth/2 + 'px)'});
 							bottom.css({'height': _depth, 'transform':'rotateX(-90deg) translateY(-' + _depth/2 + 'px) translateZ(' + _height + 'px)'});
 					});
-
-
-						
-						// var _width  = $('.' + sideclass + ':nth-child(2) > li > img').width(),
-						// 	_height = $('.' + sideclass + ':nth-child(1) > li > img').height(),
-						// 	_depth  = $('.' + sideclass + ':nth-child(3) > li > img').height();
-
-
-						// $('.content3d').css({
-						// 	"width"			: _width + 'px !important',
-						// 	"height"		: _height + 'px !important',
-						// });
-						
-						//todo >= 3
-						// if (this.side_amount < 3) {
-						// 	$('.' + 
-						// 		sideclass + ':nth-child(3), .' + 
-						// 		sideclass + ':nth-child(4), .' + 
-						// 		sideclass + ':nth-child(5), .' + 
-						// 		sideclass + ':nth-child(6)')
-						// 	.css('width',_depth);
-						// 	$('.' + 
-						// 		sideclass + ':nth-child(5), .' + 
-						// 		sideclass + ':nth-child(6)')
-						// 	.css('height',_width);
-						// }
-
-						
-						
-					
-				}//
+				}
 		});
 
 		// A really lightweight plugin wrapper around the constructor,

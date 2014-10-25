@@ -28,10 +28,10 @@
 	text-align:center;
 	line-height:230px;
 }
-.content3d .animar {
+.content3d .animated {
 	transition: all 1s;
 }
-.content3d .nonanimar{
+.content3d .notanimated{
 	transition:none;
 }
 
