@@ -13,6 +13,7 @@
 	-webkit-transform-style:preserve-3d;
 	margin:0;
 	padding:0;
+	z-index: 999;
 }
 
 .content3d li {
